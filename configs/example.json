@@ -1,0 +1,43 @@
+{
+  "robot": {
+    "type": "lumos",
+    "id": "lumos01",
+    "can_interface": "can0",
+    "sdk_root": "../.dependencies/startouch_sdk",
+    "mapping_file": "~/.config/stararm102_lumos/calibration.json",
+    "gripper": true,
+    "execute": false,
+    "joint_limits_file": "../lumos_joint_limits.json",
+    "max_speed_deg_per_sec": 50.0,
+    "max_target_step_deg": 2.0,
+    "cameras": {}
+  },
+  "teleop": {
+    "type": "stararm102",
+    "id": "stararm01",
+    "port": "/dev/ttyUSB0",
+    "mapping_file": "~/.config/stararm102_lumos/calibration.json",
+    "gripper": true,
+    "button_enabled": true,
+    "button_id": 7,
+    "joint_map": [0, 1, 2, 3, 4, 5],
+    "signs": [-1, 1, 1, 1, -1, -1],
+    "gain": 1.0
+  },
+  "fps": 30,
+  "dataset": {
+    "repo_id": "local/lumos_pick_place",
+    "root": "../datasets/lumos_pick_place",
+    "single_task": "Pick up the object and place it in the box",
+    "fps": 30,
+    "num_episodes": 3,
+    "episode_time_s": 15,
+    "reset_time_s": 10,
+    "rgb_encoder": {
+      "vcodec": "h264",
+      "preset": "ultrafast"
+    },
+    "push_to_hub": false,
+    "no_stamp": true
+  }
+}

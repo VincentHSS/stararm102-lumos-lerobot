@@ -1,0 +1,22 @@
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.env
+.config/
+calibration.json
+*.log
+outputs/
+
+work/
+.dependencies/
+
+# LeRobot integration
+*.egg-info/
+build/
+dist/
+.ruff_cache/
+datasets/
+configs/local.json
+lumos_joint_limits.json
+*.before_lumos.bak
