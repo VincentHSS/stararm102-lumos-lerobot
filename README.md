@@ -2,8 +2,6 @@
 
 [**从安装到遥操作的完整实操教程**](docs/stararm102-lumos.md)
 
-[**StarArm102 + Lumos LeRobot 遥操作系统搭建入口**](StarArm102_Lumos_LeRobot_Teleop_Setup.md)
-
 教程按 **环境搭建 → 接线与端口 → 校准 → 遥操作 → 关节数据采集 → 回放** 编写，暂不配置摄像头。
 
 ## 设备接入
