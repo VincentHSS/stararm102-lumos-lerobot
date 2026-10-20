@@ -30,6 +30,7 @@ class Lumos(Robot):
             config.max_speed_deg_per_sec,
             config.max_target_step_deg,
             config.startup_tolerance_rad,
+            config.startup_joint2_tolerance_rad,
             config.startup_wait_s,
         ):
             if not math.isfinite(value) or value <= 0:
@@ -85,8 +86,14 @@ class Lumos(Robot):
             positions = vector(self.arm.get_joint_positions(), 6, "Lumos feedback")
             if self.config.execute:
                 errors = [abs(a - b) for a, b in zip(positions, self.mapping["lumos_home_rad"])]
-                if max(errors) > self.config.startup_tolerance_rad:
-                    raise RuntimeError("Lumos is away from calibrated home; restore pose or recalibrate")
+                tolerances = [self.config.startup_tolerance_rad] * 6
+                tolerances[1] = self.config.startup_joint2_tolerance_rad
+                if any(error > tolerance for error, tolerance in zip(errors, tolerances)):
+                    raise RuntimeError(
+                        "Lumos is away from calibrated home; restore pose or recalibrate "
+                        f"(current={positions}, calibrated={self.mapping['lumos_home_rad']}, "
+                        f"errors={errors}, tolerances={tolerances})"
+                    )
                 if any(not lo <= q <= hi for q, lo, hi in zip(positions, *self.limits)):
                     raise RuntimeError("Measured startup pose is outside configured joint limits")
             self._previous_target = positions

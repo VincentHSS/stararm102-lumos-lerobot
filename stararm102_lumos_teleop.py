@@ -32,12 +32,12 @@ CALIBRATION_VERSION = 1
 # 顺序对应 Lumos 关节 1..6；1=同向，-1=反向。
 JOINT_SIGNS = (-1.0, 1.0, 1.0, 1.0, -1.0, -1.0)
 FOLLOW_GAIN = 1.0          # 主臂角度变化映射比例，范围 (0, 1]
-MAX_SPEED_DEG_PER_SEC = 50.0  # 按实际时间限速；保持原 50 Hz 时的速度上限
+MAX_SPEED_DEG_PER_SEC = 100.0  # 按实际时间限速；保持原 50 Hz 时的速度上限
 MAX_TARGET_STEP_DEG = 2.0  # 单帧最大目标变化；通信卡顿后也不追赶大步
 FILTER_MIN_CUTOFF_HZ = 5.0  # 静止/慢速时抑制角度噪声
 FILTER_BETA = 0.15        # 快速运动时提高截止频率，减少滤波延迟
 STATUS_RATE_HZ = 5.0      # 状态打印频率，避免每帧刷新终端
-CONTROL_RATE_HZ = 50.0     # 读主臂/更新 Lumos 目标的循环频率
+CONTROL_RATE_HZ = 100.0     # 读主臂/更新 Lumos 目标的循环频率
 HD_BUTTON_ENABLED = True  # 默认开启 HD 实体按钮悬停功能
 HD_BUTTON_ID = 7          # HD 按钮板 ID；不参与关节/夹爪映射
 # ================================================================

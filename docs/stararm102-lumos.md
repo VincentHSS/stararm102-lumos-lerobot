@@ -311,6 +311,8 @@ lerobot-record \
 
 第一次可以先把 `num_episodes` 改为 `3`、`episode_time_s` 改为 `15`，确认链路正常再扩大数量。重置阶段程序仍可能处理遥操作输入。
 
+启动时会检查 Lumos 是否位于配对校准参考姿态。第 2 关节允许偏差为 `0.40 rad`，其余五个关节为 `0.15 rad`；超限时报错并显示当前姿态、校准姿态、差值和各关节阈值。关节限位和速度限制仍生效。首次执行前确认目标姿态及运动路径安全。
+
 下一批数据同时修改名称与目录，例如将两处 `lumos_joint_demo_001` 改成 `lumos_joint_demo_002`，避免覆盖已有数据。
 
 ### 2. 记录参数
@@ -435,7 +437,7 @@ ip -details link show "$LUMOS_CAN"
 | 端口或关节顺序与校准不符 | 使用原校准设置，或重新配对校准 |
 | HD 按钮 ID 7 不响应 | 有按钮时检查接线与 ID；没有按钮板才禁用 |
 | 缺少从臂限位 | 核对 `LUMOS_LIMITS_FILE`，生成并核实限位 |
-| `Lumos is away from calibrated home` | 按厂商操作恢复参考姿态，或重新校准，不放大容差跳过检查 |
+| `Lumos is away from calibrated home` | 查看报错中的当前姿态、校准姿态、差值和阈值；将超限关节恢复到参考姿态附近，或重新配对校准 |
 | SDK 找不到配置 | 检查 `LUMOS_SDK_ROOT/src/config/robot_kinematics.yaml` |
 | 数据目录已存在 | 为新采集换一个新名称和新目录 |
 | 方向不正确 | 先停在预览模式，逐关节核对 `joint_map` 与 `signs` |

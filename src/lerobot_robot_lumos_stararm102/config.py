@@ -15,6 +15,7 @@ class LumosConfig(RobotConfig):
     # This prevents motion commands, NOT motor enabling during SDK construction.
     execute: bool = False
     startup_tolerance_rad: float = 0.15
+    startup_joint2_tolerance_rad: float = 0.40
     startup_wait_s: float = 2.0
     max_speed_deg_per_sec: float = 50.0
     max_target_step_deg: float = 2.0
