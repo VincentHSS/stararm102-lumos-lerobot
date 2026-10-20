@@ -2,7 +2,7 @@
 
 使用 Star Arm 102 主臂实时控制 Lumos 单臂
 
-程序通过 Star Arm UART 和 Lumos CAN 通信，不依赖 LeRobot。客户操作步骤见 [操作指南](docs/StarArm102_Lumos_Python_Teleoperation_Guide.docx)。
+程序通过 Star Arm UART 和 Lumos CAN 通信，不依赖 LeRobot。客户操作步骤见 [操作指南](docs/StarArm102_Lumos_Python_Teleoperation_Guide.md)。
 
 ## 硬件与环境
 
@@ -216,7 +216,7 @@ CSV 包含采样间隔、主臂读取与目标下发耗时、目标差值、六�
 │   └── install_ubuntu.sh
 ├── README.md
 └── docs/
-    └── StarArm102_Lumos_Python_Teleoperation_Guide.docx
+    └── StarArm102_Lumos_Python_Teleoperation_Guide.md
 ```
 
 ## License
